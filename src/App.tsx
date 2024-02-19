@@ -1,9 +1,10 @@
-function App() {
+import React from 'react'
+import Landing from '@/components/Landing'
+
+const App: React.FC = () => {
  return (
   <>
-   <div className="grid place-items-center font-main">
-    <h1 className="flex flex-col place-content-center">Hello</h1>
-   </div>
+   <Landing />
   </>
  )
 }
