@@ -10,7 +10,7 @@ const Navbar: React.FC = () => {
    {isMobile ? (
     <img src={logo} alt="Island Hopping Siargao" className={`w-10 h-auto`} />
    ) : (
-    <div className="flex justify-between items-center">
+    <div className="flex justify-between items-center border-b border-zinc-300">
      <div className="flex items-center gap-4 border-r border-zinc-300 pr-6">
       <img src={logo} alt="Island Hopping Siargao" className={`w-16 h-auto`} />
       <h1 className="font-extrabold text-2xl text-main">
