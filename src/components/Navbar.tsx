@@ -19,7 +19,11 @@ const Navbar: React.FC = () => {
      </div>
      <div className="flex gap-x-10 items-center">
       {data.map((item, index) => (
-       <a href={item.url} key={index} className="text-main font-semibold">
+       <a
+        href={item.url}
+        key={index}
+        className="text-black font-semibold menu hover:text-main duration-150"
+       >
         {item.label}
        </a>
       ))}
