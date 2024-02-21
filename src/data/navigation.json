@@ -1,0 +1,22 @@
+[
+ {
+  "label": "About",
+  "url": "/about"
+ },
+ {
+  "label": "GIS System",
+  "url": "/gis"
+ },
+ {
+  "label": "Tourist Spots",
+  "url": "/spots"
+ },
+ {
+  "label": "Road Networks",
+  "url": "/networks"
+ },
+ {
+  "label": "Author",
+  "url": "/author"
+ }
+]

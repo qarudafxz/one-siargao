@@ -5,6 +5,15 @@ export default {
   extend: {
    fontFamily: {
     main: ['Montserrat', 'sans-serif']
+   },
+   backgroundColor: {
+    main: '#1154FF'
+   },
+   color: {
+    main: '#1154FF'
+   },
+   textColor: {
+    main: '#1154FF'
    }
   }
  },
