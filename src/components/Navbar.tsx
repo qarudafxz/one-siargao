@@ -2,6 +2,7 @@ import React from 'react'
 import logo from '@/assets/logo.png'
 import { useMedia } from '@/hooks/useMedia'
 import data from '@/data/navigation.json'
+import { Link } from 'react-scroll'
 
 const Navbar: React.FC = () => {
  const isMobile = useMedia('(max-width: 768px)')
@@ -19,13 +20,15 @@ const Navbar: React.FC = () => {
      </div>
      <div className="flex gap-x-10 items-center">
       {data.map((item, index) => (
-       <a
-        href={item.url}
+       <Link
+        to={item.url}
+        smooth={true}
+        spy={true}
         key={index}
-        className="text-black font-semibold menu hover:text-main duration-150"
+        className="text-black font-semibold menu cursor-pointer hover:text-main duration-150"
        >
         {item.label}
-       </a>
+       </Link>
       ))}
      </div>
     </div>
