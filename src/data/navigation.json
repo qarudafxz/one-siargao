@@ -1,22 +1,22 @@
 [
  {
   "label": "About",
-  "url": "/about"
+  "url": "about"
  },
  {
   "label": "Geo-Info System",
-  "url": "/gis"
+  "url": "gis"
  },
  {
   "label": "Tourist Spots",
-  "url": "/spots"
+  "url": "spots"
  },
  {
   "label": "Road Networks",
-  "url": "/networks"
+  "url": "networks"
  },
  {
   "label": "Author",
-  "url": "/author"
+  "url": "author"
  }
 ]
