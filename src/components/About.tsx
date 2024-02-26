@@ -20,9 +20,9 @@ const About: React.FC = () => {
        <p>
         <span className="font-bold">#1 Siargao</span> is a GIS-Based Network
         Analysis in Finding Optimal Route on Accessing Tourist Places in Siargao
-        Island, Philippines. The system will seek users beautiful tourist spots
-        in Siargao based on the starting points and the time frame given for
-        travel. This updates the road networks in Siargao Islands with
+        Island, Philippines. The system will provide users beautiful tourist
+        spots in Siargao based on the starting points and the time frame given
+        for travel. This updates the road networks in Siargao Islands with
         integrated road networks along with tourist attractions and relevant
         geographic features.
        </p>
