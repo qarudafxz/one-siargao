@@ -8,15 +8,7 @@
   "url": "gis"
  },
  {
-  "label": "Tourist Spots",
-  "url": "spots"
- },
- {
-  "label": "Road Networks",
-  "url": "networks"
- },
- {
-  "label": "Author",
+  "label": "Authors",
   "url": "author"
  }
 ]

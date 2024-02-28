@@ -14,6 +14,9 @@ export default {
    },
    textColor: {
     main: '#1154FF'
+   },
+   borderColor: {
+    main: '#1154FF'
    }
   }
  },

@@ -1,11 +1,18 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import logo from '@/assets/logo.png'
 import { useMedia } from '@/hooks/useMedia'
 import data from '@/data/navigation.json'
 import { Link } from 'react-scroll'
 
 const Navbar: React.FC = () => {
+ const navigate = useNavigate()
  const isMobile = useMedia('(max-width: 768px)')
+
+ const rerouteToSystem = () => {
+  navigate('/gis')
+ }
+
  return (
   <div>
    {isMobile ? (
@@ -30,6 +37,12 @@ const Navbar: React.FC = () => {
         {item.label}
        </Link>
       ))}
+      <button
+       onClick={rerouteToSystem}
+       className="font-bold text-main border-2 border-main rounded-full py-2 px-6 hover:bg-main hover:text-white duration-200"
+      >
+       Find Spots
+      </button>
      </div>
     </div>
    )}
