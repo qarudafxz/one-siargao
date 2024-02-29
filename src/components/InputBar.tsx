@@ -1,11 +1,13 @@
 //eslint-disable-next-line
 //@ts-nocheck
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useMedia } from '@/hooks/useMedia'
 import data from '@/data/starting_points.json'
 import { Select, MenuItem } from '@mui/material'
 import { CiLocationArrow1 } from 'react-icons/ci'
 import { PiSneakerMoveBold } from 'react-icons/pi'
+import { Toaster, toast } from 'sonner'
 
 interface LocationProps {
  location_name: string
@@ -14,11 +16,12 @@ interface LocationProps {
 
 const InputBar: React.FC = () => {
  const isMobile = useMedia('(max-width: 768px)')
+ const navigate = useNavigate()
  const [loc, setLoc] = useState<LocationProps>({
-  location_name: 'Sayak Airport',
-  location_code: 'IAO'
+  location_name: '',
+  location_code: ''
  })
- const [mode, setMode] = useState<string>('Trycicle')
+ const [mode, setMode] = useState<string>('')
 
  const handleChangeMode = (event: React.ChangeEvent) => {
   setMode(event.target.value as string)
@@ -31,8 +34,18 @@ const InputBar: React.FC = () => {
   setLoc(selectedLocation)
  }
 
+ const revealDirections = () => {
+  if (!loc || !mode) {
+   toast.error('Please provide all details.')
+   return
+  }
+
+  navigate('/gis', { state: { ...loc, mode } })
+ }
+
  return (
   <div className="bg-white shadow-md rounded-md mt-10">
+   <Toaster position="top-center" />
    {isMobile ? (
     <div className="p-3 grid grid-cols-2"></div>
    ) : (
@@ -58,14 +71,17 @@ const InputBar: React.FC = () => {
        onChange={handleChangeMode}
        className="w-[850px] border-none rounded-md p-3"
       >
-       {['Trycicle', 'Van', 'Bike', 'Walk'].map((item) => (
+       {['Trycicle', 'Van', 'Bike', 'Walk', 'Boat'].map((item) => (
         <MenuItem key={item} value={item}>
          {item}
         </MenuItem>
        ))}
       </Select>
      </div>
-     <button className="col-span-2 w-full text-center rounded-md bg-main text-white font-bold hover:bg-blue-700 duration-150">
+     <button
+      onClick={revealDirections}
+      className="col-span-2 w-full text-center rounded-md bg-main text-white font-bold hover:bg-blue-700 duration-150"
+     >
       Reveal Directions
      </button>
     </div>
