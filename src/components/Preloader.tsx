@@ -27,7 +27,7 @@ const Preloader: React.FC<{ active: boolean }> = ({ active }) => {
  }, [active, toggleLoading])
 
  return (
-  <div>
+  <>
    {isLoading &&
     (isMobile ? (
      <div></div>
@@ -49,7 +49,7 @@ const Preloader: React.FC<{ active: boolean }> = ({ active }) => {
       </motion.div>
      </div>
     ))}
-  </div>
+  </>
  )
 }
 

@@ -21,3 +21,9 @@ export interface Database {
   }
  }
 }
+
+export interface StartPoints {
+ location_name: string
+ location_code: string
+ coordinates: number[]
+}

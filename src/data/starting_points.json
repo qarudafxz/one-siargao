@@ -1,10 +1,12 @@
 [
  {
   "location_name": "Sayak Airport",
-  "location_code": "IAO"
+  "location_code": "IAO",
+  "coordinates": [9.859722, 126.014722]
  },
  {
   "location_name": "Dapa Seaport",
-  "location_code": "DPS"
+  "location_code": "DPS",
+  "coordinates": [9.757222, 126.014722]
  }
 ]
