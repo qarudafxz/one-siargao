@@ -34,7 +34,7 @@ const Map: React.FC = () => {
     >
      <Popup>
       <div className="p-4 bg-white shadow-md rounded-lg">
-       <h1 className="text-xl font-semibold">{point.location_name}</h1>
+       <h1 className="text-lg font-semibold">{point.location_name}</h1>
        <p className="text-center">{point.location_code}</p>
        <p>{point.coordinates}</p>
       </div>
