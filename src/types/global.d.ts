@@ -27,3 +27,10 @@ export interface StartPoints {
  location_code: string
  coordinates: number[]
 }
+
+export interface DataProps {
+ starting_point?: string
+ time_of_travel?: string
+ mode_of_transportation?: string
+ budget?: number
+}

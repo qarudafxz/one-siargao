@@ -10,7 +10,7 @@ const Authors: React.FC = () => {
    {isMobile ? (
     <div></div>
    ) : (
-    <div className="py-44 px-36 bg-main" id="networks">
+    <div id="authors" className="py-44 px-36 bg-main">
      <h1 className="font-bold text-3xl text-center text-white">
       Authors of #1 Siargao
      </h1>

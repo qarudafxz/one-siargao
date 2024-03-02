@@ -15,7 +15,7 @@ const System: React.FC = () => {
       <SidebarComponent />
      </div>
      {/* OpenStreetMap */}
-     <div className="col-span-8">
+     <div className="col-span-8 relative">
       <Map />
      </div>
     </div>

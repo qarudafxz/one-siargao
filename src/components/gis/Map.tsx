@@ -13,17 +13,24 @@ const Map: React.FC = () => {
   <MapContainer
    center={[9.86666, 126.05]}
    zoom={12}
+   minZoom={8}
    maxZoom={18}
+   zoomSnap={0.5}
    style={{ width: '100%', height: '100%', position: 'relative' }}
    dragging={true}
    scrollWheelZoom={true}
+   zoomAnimation={true}
+   zoomAnimationThreshold={4}
+   className="relative"
   >
    <TileLayer
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
    />
-
-   <GeoJSON data={road_networks as GeoJsonObject} />
+   <GeoJSON
+    data={road_networks as GeoJsonObject}
+    style={{ color: '#555555' }}
+   />
    {data.map((point: StartPoints, idx: number) => (
     <Marker
      key={idx}
