@@ -1,7 +1,7 @@
 import React from 'react'
 import { useMedia } from '@/hooks/useMedia'
+import { Navbar, Hero, About, GIS, Files, Authors } from './index'
 
-import { Navbar, Hero, About, GIS, Authors } from './index'
 const Landing: React.FC = () => {
  const isMobile = useMedia('(max-width: 768px)')
  return (
@@ -11,6 +11,7 @@ const Landing: React.FC = () => {
     <Hero />
     <About />
     <GIS />
+    <Files />
    </div>
    <Authors />
   </div>

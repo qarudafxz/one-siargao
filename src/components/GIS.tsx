@@ -19,7 +19,7 @@ const GIS: React.FC = () => {
    ) : (
     <div id="gis" className="flex flex-col gap-4 py-36 w-full">
      <h1 className="font-bold text-2xl text-center">
-      #1 Siargao Geographic Information System
+      #1 Siargao Geographic Information System Data
      </h1>
      <div className="mt-10 grid grid-cols-4 gap-4">
       {data?.map((item: Props, idx: number) => {

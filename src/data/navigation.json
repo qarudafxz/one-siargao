@@ -8,6 +8,10 @@
   "url": "gis"
  },
  {
+  "label": "Files",
+  "url": "files"
+ },
+ {
   "label": "Authors",
   "url": "authors"
  }
