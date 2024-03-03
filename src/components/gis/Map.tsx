@@ -7,6 +7,7 @@ import { StartPoints } from '@/types/global'
 import road_networks from '@/data/Road_Networks.json'
 import tourist_spots from '@/data/spots.json'
 import orange_pin from '@/assets/orange_pin.png'
+import blue_pin from '@/assets/blue_pin.png'
 import { Icon } from 'leaflet'
 
 const Map: React.FC = () => {
@@ -22,12 +23,21 @@ const Map: React.FC = () => {
   className: 'orange-icon'
  })
 
+ const blueIcon = new Icon({
+  iconUrl: blue_pin,
+  iconRetinaUrl: blue_pin,
+  iconAnchor: [12, 41],
+  popupAnchor: [0, -41],
+  shadowAnchor: [12, 41],
+  iconSize: [40, 41],
+  className: 'blue-icon'
+ })
+
  return (
   <MapContainer
    center={[9.86666, 126.05]}
    zoom={12}
    minZoom={8}
-   maxZoom={18}
    zoomSnap={0.5}
    style={{ width: '100%', height: '100%', position: 'relative' }}
    dragging={true}
@@ -70,6 +80,7 @@ const Map: React.FC = () => {
      position={[point.coordinates[0], point.coordinates[1]]}
      title={point.location_name}
      alt={point.location_name}
+     icon={blueIcon}
     >
      <Popup>
       <div className="p-4 bg-white shadow-md rounded-lg">
