@@ -1,9 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Select, Input, Button } from '@mui/material'
 import { DataProps } from '@/types/global'
+import { useDataStore } from '@/store/data'
 
 const Inputs: React.FC = () => {
- const [data, setData] = useState<DataProps>({})
+ const { data } = useDataStore()
+ const [value, setValue] = useState<DataProps>({})
+
+ useEffect(() => {}, [])
 
  return (
   <div className="flex flex-col gap-4">
@@ -15,6 +19,7 @@ const Inputs: React.FC = () => {
       variant="standard"
       fullWidth
       defaultValue="Dapa Seaport"
+      value={value?.starting_point ?? ''}
       label="Starting Point"
      >
       <option value="Dapa Seaport">Dapa Seaport</option>
@@ -28,9 +33,9 @@ const Inputs: React.FC = () => {
       variant="standard"
       fullWidth
       defaultValue="0 - 30 minutes"
-      value={data.time_of_travel}
+      value={value.time_of_travel}
       label="Time of Travel"
-      onChange={(e) => setData({ ...data, time_of_travel: e.target.value })}
+      onChange={(e) => setValue({ ...value, time_of_travel: e.target.value })}
      >
       <option value="0 - 30 minutes">0 - 30 minutes</option>
       <option value="30 minutes - 1 hour">30 minutes - 1 hour</option>
@@ -47,6 +52,7 @@ const Inputs: React.FC = () => {
       variant="standard"
       fullWidth
       defaultValue="Motorcycle"
+      value={data?.mode ?? ''}
       label="Mode of Transportation"
      >
       <option value="Motorcycle">Motorcycle</option>

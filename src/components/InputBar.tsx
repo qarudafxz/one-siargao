@@ -8,6 +8,7 @@ import { Select, MenuItem } from '@mui/material'
 import { CiLocationArrow1 } from 'react-icons/ci'
 import { PiSneakerMoveBold } from 'react-icons/pi'
 import { Toaster, toast } from 'sonner'
+import { useDataStore } from '@/store/data'
 
 interface LocationProps {
  location_name: string
@@ -15,6 +16,7 @@ interface LocationProps {
 }
 
 const InputBar: React.FC = () => {
+ const { setData } = useDataStore()
  const isMobile = useMedia('(max-width: 768px)')
  const navigate = useNavigate()
  const [loc, setLoc] = useState<LocationProps>({
@@ -40,7 +42,9 @@ const InputBar: React.FC = () => {
    return
   }
 
-  navigate('/gis', { state: { ...loc, mode } })
+  setData({ ...loc, mode })
+
+  navigate('/gis')
  }
 
  return (
