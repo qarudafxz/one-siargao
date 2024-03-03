@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Select, Input, Button } from '@mui/material'
 import { DataProps } from '@/types/global'
-import { useDataStore } from '@/store/data'
+// import { useDataStore } from '@/store/data'
 
 const Inputs: React.FC = () => {
- const { data } = useDataStore()
+ // const { data } = useDataStore()
  const [value, setValue] = useState<DataProps>({})
 
  useEffect(() => {}, [])
@@ -52,7 +52,6 @@ const Inputs: React.FC = () => {
       variant="standard"
       fullWidth
       defaultValue="Motorcycle"
-      value={data?.mode ?? ''}
       label="Mode of Transportation"
      >
       <option value="Motorcycle">Motorcycle</option>

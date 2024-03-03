@@ -26,6 +26,10 @@ const SidebarComponent: React.FC = () => {
       <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
       <p className="text-[12px]">Tourist Spots</p>
      </div>
+     <div className="flex gap-2 items-center">
+      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+      <p className="text-[12px]">Shortest Path</p>
+     </div>
     </div>
    </div>
    <Inputs />
