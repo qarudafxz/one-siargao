@@ -43,6 +43,8 @@ const Inputs: React.FC = () => {
       <option value="2 hours - 3 hours">2 hours - 3 hours</option>
       <option value="3 hours - 4 hours">3 hours - 4 hours</option>
       <option value="4 hours - 5 hours">4 hours - 5 hours</option>
+      <option value="6 hours - 7 hours">6 hours - 7 hours</option>
+      <option value="7 hours - 8 hours">7 hours - 8 hours</option>
      </Select>
     </div>
     <div>

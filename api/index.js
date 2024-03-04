@@ -3,7 +3,6 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 import morgan from 'morgan'
 import { rateLimit } from 'express-rate-limit'
-import { generateShortestPath } from './controllers/index'
 
 dotenv.config()
 
@@ -25,8 +24,8 @@ const limiter = rateLimit({
  legacyHeaders: false
 })
 
-app.post('/', generateShortestPath)
-
 app.use(limiter)
 
 app.listen(PORT, () => console.log(`Server is listening to port ${PORT}`))
+
+export { limiter as default }
