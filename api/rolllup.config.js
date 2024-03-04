@@ -8,7 +8,7 @@ import alias from '@rollup/plugin-alias'
 export default {
  input: 'api/index.ts', // Entry point for your TypeScript code
  output: {
-  dir: './dist/index.js', // Output JavaScript file
+  dir: './dist/bundle.js', // Output JavaScript file
   format: 'es',
   inlineDynamicImports: true
  },
