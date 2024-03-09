@@ -1,26 +1,70 @@
 import React, { useState, useEffect } from 'react'
 import { Select, Input, Button } from '@mui/material'
 import { DataProps } from '@/types/global'
-// import { useDataStore } from '@/store/data'
+import { toast, Toaster } from 'sonner'
+import { build } from '@/lib/build'
+import { useShortestPath } from '@/store/shortest_path'
 
 const Inputs: React.FC = () => {
  // const { data } = useDataStore()
- const [value, setValue] = useState<DataProps>({})
+ const { setShortestPath } = useShortestPath()
+ const [value, setValue] = useState<DataProps>({
+  starting_point: 'Sayak',
+  time_of_travel: '0 - 30 minutes',
+  mode_of_transportation: 'Motorcycle',
+  budget: 0
+ })
+ const [loading, setLoading] = useState(false)
 
- useEffect(() => {}, [])
+ const handleGeneratePath = async (e: React.MouseEvent) => {
+  e.preventDefault()
+
+  try {
+   setLoading(true)
+
+   const response = await fetch(build('api/v1/generate'), {
+    method: 'POST',
+    headers: {
+     'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(value)
+   })
+
+   if (!response.ok) {
+    throw new Error('An error occurred while generating the shortest path')
+   }
+
+   const data = await response.json()
+   if (response.status === 200) {
+    setShortestPath(data.spots)
+    setLoading(false)
+   }
+  } catch (err) {
+   toast.error('An error occurred while generating the shortest path')
+   setLoading(false)
+  }
+ }
+
+ useEffect(() => {
+  loading
+   ? toast.loading('Generating shortest path')
+   : toast.success('Shortest path generated successfully')
+ }, [loading])
 
  return (
   <div className="flex flex-col gap-4">
+   <Toaster position="bottom-right" />
    <form className="flex flex-col gap-7">
     <div>
      <label htmlFor="starting_point">Starting Point</label>
      <Select
       id="starting_point"
+      name="starting_point"
       variant="standard"
       fullWidth
-      defaultValue="Dapa Seaport"
-      value={value?.starting_point ?? ''}
+      value={value?.starting_point}
       label="Starting Point"
+      onChange={(e) => setValue({ ...value, starting_point: e.target.value })}
      >
       <option value="Dapa Seaport">Dapa Seaport</option>
       <option value="Sayak Airport">Sayak Airport</option>
@@ -30,9 +74,9 @@ const Inputs: React.FC = () => {
      <label htmlFor="time_of_travel">Time of Travel</label>
      <Select
       id="time_of_travel"
+      name="time_of_travel"
       variant="standard"
       fullWidth
-      defaultValue="0 - 30 minutes"
       value={value.time_of_travel}
       label="Time of Travel"
       onChange={(e) => setValue({ ...value, time_of_travel: e.target.value })}
@@ -51,10 +95,14 @@ const Inputs: React.FC = () => {
      <label htmlFor="mode_of_transportation">Mode of Transportation</label>
      <Select
       id="mode_of_transportation"
+      name="mode_of_transportation"
       variant="standard"
       fullWidth
-      defaultValue="Motorcycle"
+      value={value.mode_of_transportation}
       label="Mode of Transportation"
+      onChange={(e) =>
+       setValue({ ...value, mode_of_transportation: e.target.value as string })
+      }
      >
       <option value="Motorcycle">Motorcycle</option>
       <option value="Tricycle">Tricycle</option>
@@ -76,7 +124,11 @@ const Inputs: React.FC = () => {
      />
     </div>
     <div>
-     <Button variant="contained" className="w-full">
+     <Button
+      onClick={handleGeneratePath}
+      variant="contained"
+      className="w-full"
+     >
       Generate Shortest Path
      </Button>
     </div>

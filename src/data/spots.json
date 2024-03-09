@@ -1,234 +1,162 @@
 [
  {
-  "tourist_spot": "Sunrise Beach",
-  "coordinates": [9.8548, 126.0463]
+  "tourist_spots": "Burgos Surfing Site",
+  "coordinates": [9.0206556, 126.072808]
  },
  {
-  "tourist_spot": "Burgos Surfing Site",
-  "coordinates": [9.9517, 126.0332]
+  "tourist_spots": "Corregidor Island",
+  "coordinates": [9.6963611, 126.0733222]
  },
  {
-  "tourist_spot": "Sumyot Cave",
-  "coordinates": [9.8141378, 126.0962849]
+  "tourist_spots": "Cloud 9 Surfing Site",
+  "coordinates": [9.8125147, 126.1637889]
  },
  {
-  "tourist_spot": "Corregidor Island",
-  "coordinates": [9.729, 125.9562]
+  "tourist_spots": "Cloud 9 Boardwalk and Tower",
+  "coordinates": [9.8125147, 126.1637889]
  },
  {
-  "tourist_spot": "Union Beach",
-  "coordinates": [9.9, 126.0295]
+  "tourist_spots": "Mam-on Island",
+  "coordinates": [9.6146528, 126.1760361]
  },
  {
-  "tourist_spot": "Union-Don Paulino Surfing Site",
-  "coordinates": [9.9, 126.0295]
+  "tourist_spots": "Blue Cathedral",
+  "coordinates": [9.8447972, 126.1574306]
  },
  {
-  "tourist_spot": "Cloud 9 Surfing Site",
-  "coordinates": [9.8584, 126.0495]
+  "tourist_spots": "Tuason Point (Surfing Site)",
+  "coordinates": [9.8084972, 126.1679417]
  },
  {
-  "tourist_spot": "Cloud 9 Boardwalk and Tower",
-  "coordinates": [9.8584, 126.0495]
+  "tourist_spots": "Jacking Horse (Surfing Site)",
+  "coordinates": [9.8125147, 126.1637889]
  },
  {
-  "tourist_spot": "Daku Island",
-  "coordinates": [9.7806, 126.0186]
+  "tourist_spots": "Rock Island (Surfing Site)",
+  "coordinates": [9.8331583, 126.1663556]
  },
  {
-  "tourist_spot": "Guyam Islet",
-  "coordinates": [9.8419, 126.0373]
+  "tourist_spots": "Pansukian Reef (Surfing Site)",
+  "coordinates": [9.7579417, 126.1229444]
  },
  {
-  "tourist_spot": "Naked Island",
-  "coordinates": [9.8672, 126.0201]
+  "tourist_spots": "Sugba Lagoon",
+  "coordinates": [9.9063417, 125.9002778]
  },
  {
-  "tourist_spot": "General Luna White Beach",
-  "coordinates": [9.8548, 126.0463]
+  "tourist_spots": "Mangrove Forest",
+  "coordinates": [9.8594889, 125.9712611]
  },
  {
-  "tourist_spot": "Mam-on Island",
-  "coordinates": [9.9975, 126.0712]
+  "tourist_spots": "Kawhagan Island",
+  "coordinates": [9.920925, 125.8950472]
  },
  {
-  "tourist_spot": "Blue Cathedral",
-  "coordinates": [9.8894, 126.1356]
+  "tourist_spots": "Pamomoan Beach",
+  "coordinates": [9.9175972, 125.8974611]
  },
  {
-  "tourist_spot": "Tuason Point (Surfing Site)",
-  "coordinates": [9.8705, 126.0633]
+  "tourist_spots": "Magpupungko Rock Formation and Tidal Pools",
+  "coordinates": [9.8765972, 126.1207556]
  },
  {
-  "tourist_spot": "Jacking Horse (Surfing Site)",
-  "coordinates": [9.8608, 126.049]
+  "tourist_spots": "Maasin River (Maasin Bridge River Swing)",
+  "coordinates": [9.8213722, 126.0562528]
  },
  {
-  "tourist_spot": "Rock Island (Surfing Site)",
-  "coordinates": [9.8665, 126.0836]
+  "tourist_spots": "Tayangban Cave Pool",
+  "coordinates": [9.8611361, 126.063025]
  },
  {
-  "tourist_spot": "Pansukian Reef (Surfing Site)",
-  "coordinates": [9.8465, 126.0567]
+  "tourist_spots": "Alegria White Sand Beach",
+  "coordinates": [10.05545, 126.0707889]
  },
  {
-  "tourist_spot": "Sugba Lagoon",
-  "coordinates": [9.866, 126.1641]
+  "tourist_spots": "Hagukan Dive ",
+  "coordinates": [10.0553083, 126.0512778]
  },
  {
-  "tourist_spot": "Mangrove Forest",
-  "coordinates": [9.8693, 126.0664]
+  "tourist_spots": "Tangbo Surfing",
+  "coordinates": [10.0553194, 126.0533194]
  },
  {
-  "tourist_spot": "Kawhagan Island",
-  "coordinates": [9.8614, 126.1455]
+  "tourist_spots": "Zipline, San Benito, Siargao Aerial Surfing Site",
+  "coordinates": [9.9378111, 125.9998306]
  },
  {
-  "tourist_spot": "Pamomoan Beach",
-  "coordinates": [9.853, 126.1472]
+  "tourist_spots": "San Isidro River",
+  "coordinates": [9.9473917, 126.0786361]
  },
  {
-  "tourist_spot": "Magpupungko Rock Formation and Tidal Pools",
-  "coordinates": [9.8816, 126.1077]
+  "tourist_spots": "Poneas Hilltop Lake (Poneas Island)",
+  "coordinates": [9.9036611, 125.9421167]
  },
  {
-  "tourist_spot": "Maasin River (Maasin Bridge River Swing)",
-  "coordinates": [9.8779, 126.069]
+  "tourist_spots": "Pagbasayan Islet",
+  "coordinates": [9.98875, 126.0075]
  },
  {
-  "tourist_spot": "Tayangban Cave Pool",
-  "coordinates": [9.8549, 126.1476]
+  "tourist_spots": "Kangkangon Beach",
+  "coordinates": [9.9690167, 125.9737667]
  },
  {
-  "tourist_spot": "Alegria White Sand Beach",
-  "coordinates": [9.9471, 126.0387]
+  "tourist_spots": "Taktak Falls",
+  "coordinates": [10.0341194, 126.0430083]
  },
  {
-  "tourist_spot": "Hagukan Dive",
-  "coordinates": [9.8894, 126.1356]
+  "tourist_spots": "Sohoton Cove",
+  "coordinates": [9.59935, 125.9160194]
  },
  {
-  "tourist_spot": "Tangbo Surfing",
-  "coordinates": [9.9455, 126.056]
+  "tourist_spots": "Jellyfish Kingdom",
+  "coordinates": [9.5936, 125.9159611]
  },
  {
-  "tourist_spot": "Zipline, San Benito, Siargao Aerial Surfing Site",
-  "coordinates": [9.948, 126.0604]
+  "tourist_spots": "Magkukuob Cave and Cliff Diving",
+  "coordinates": [9.5885528, 125.9239972]
  },
  {
-  "tourist_spot": "Buhing Kalipay Blue Lagoon",
-  "coordinates": [9.7312, 125.9558]
+  "tourist_spots": "Tiktikan Lake and Sohoton Gamay",
+  "coordinates": [9.6172528, 125.9375333]
  },
  {
-  "tourist_spot": "San Isidro River",
-  "coordinates": [9.7299, 125.979]
+  "tourist_spots": "Bolitas Cave",
+  "coordinates": [9.6145694, 125.9106944]
  },
  {
-  "tourist_spot": "Sabang Beach",
-  "coordinates": [9.9713, 126.0029]
+  "tourist_spots": "Bobon White Islet",
+  "coordinates": [9.5833333, 125.9166667]
  },
  {
-  "tourist_spot": "Poneas Hilltop Lake (Poneas Island)",
-  "coordinates": [9.9476, 125.9741]
+  "tourist_spots": "Crystal Cave (Crystal and Bolitas Cave) ",
+  "coordinates": [9.6135611, 125.9113056]
  },
  {
-  "tourist_spot": "Pagbasayan Islet",
-  "coordinates": [9.7956, 126.021]
+  "tourist_spots": "Kanlanuk Bay and Falls",
+  "coordinates": [9.6645972, 125.9179306]
  },
  {
-  "tourist_spot": "Kangkangon Beach",
-  "coordinates": [9.7045, 125.9736]
+  "tourist_spots": "Eco-Grande Park (Garden Eco Park Resort)",
+  "coordinates": [9.6544889, 125.97955]
  },
  {
-  "tourist_spot": "Campayas Vanishing Island",
-  "coordinates": [9.7967, 126.0729]
+  "tourist_spots": "Secret Island",
+  "coordinates": [9.7652444, 126.1641333]
  },
  {
-  "tourist_spot": "Taktak Falls",
-  "coordinates": [9.6088, 125.6573]
+  "tourist_spots": "Mountain View",
+  "coordinates": [9.8122722, 126.059525]
  },
  {
-  "tourist_spot": "Sohoton Cove",
-  "coordinates": [9.8959, 126.1428]
+  "tourist_spots": "Pilar Mangroves (Bon's Mangrove Inn)",
+  "coordinates": [9.8654389, 126.09945]
  },
  {
-  "tourist_spot": "Jellyfish Kingdom",
-  "coordinates": [9.8999, 126.1317]
+  "tourist_spots": "Secret Lagoon",
+  "coordinates": [9.7727472, 126.1094139]
  },
  {
-  "tourist_spot": "Magkukuob Cave and Cliff Diving",
-  "coordinates": [9.8904, 126.1304]
- },
- {
-  "tourist_spot": "Hagukan Cove",
-  "coordinates": [9.886, 126.1308]
- },
- {
-  "tourist_spot": "Tiktikan Lake and Sohoton Gamay",
-  "coordinates": [9.894, 126.1443]
- },
- {
-  "tourist_spot": "Bolitas Cave",
-  "coordinates": [9.8981, 126.1273]
- },
- {
-  "tourist_spot": "Magkahuyog Falls",
-  "coordinates": [9.874, 126.1474]
- },
- {
-  "tourist_spot": "Marka-A White Beach",
-  "coordinates": [9.7409, 126.0265]
- },
- {
-  "tourist_spot": "Hundred Islands",
-  "coordinates": [9.8898, 126.1223]
- },
- {
-  "tourist_spot": "Tundan Cave",
-  "coordinates": [9.7299, 125.979]
- },
- {
-  "tourist_spot": "Bobon White Islet",
-  "coordinates": [9.9529, 125.9663]
- },
- {
-  "tourist_spot": "Crystal Cave (Crystal and Bolitas Cave)",
-  "coordinates": [9.8981, 126.1273]
- },
- {
-  "tourist_spot": "Kanlanuk Bay and Falls",
-  "coordinates": [9.7656, 125.9562]
- },
- {
-  "tourist_spot": "Eco-Grande Park (Garden Eco Park Resort)",
-  "coordinates": [9.8933, 126.046]
- },
- {
-  "tourist_spot": "Kawasi Waterfalls",
-  "coordinates": [9.7612, 125.9763]
- },
- {
-  "tourist_spot": "Secret Island",
-  "coordinates": [9.6953, 125.9784]
- },
- {
-  "tourist_spot": "Mountain View",
-  "coordinates": [9.8548, 126.0463]
- },
- {
-  "tourist_spot": "Pilar Mangroves (Bon's Mangrove Inn)",
-  "coordinates": [9.9617, 126.0648]
- },
- {
-  "tourist_spot": "Secret Lagoon",
-  "coordinates": [9.7703, 125.9602]
- },
- {
-  "tourist_spot": "Sarofa Farm",
-  "coordinates": [9.8289, 126.0016]
- },
- {
-  "tourist_spot": "Litik Maasin River",
-  "coordinates": [9.8798, 126.0691]
+  "tourist_spots": "Litik Maasin River",
+  "coordinates": [9.8228361, 126.0561694]
  }
 ]

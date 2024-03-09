@@ -9,9 +9,13 @@ import tourist_spots from '@/data/spots.json'
 import orange_pin from '@/assets/orange_pin.png'
 import blue_pin from '@/assets/blue_pin.png'
 import { Icon } from 'leaflet'
+import { useShortestPath } from '@/store/shortest_path'
 
 const Map: React.FC = () => {
- useEffect(() => {}, [])
+ const { shortestPath } = useShortestPath()
+ useEffect(() => {
+  console.log('Shortest path', shortestPath)
+ }, [])
 
  const orangeIcon = new Icon({
   iconUrl: orange_pin,
@@ -37,8 +41,8 @@ const Map: React.FC = () => {
   <MapContainer
    center={[9.86666, 126.05]}
    zoom={12}
-   minZoom={8}
    zoomSnap={0.5}
+   minZoom={8}
    style={{ width: '100%', height: '100%', position: 'relative' }}
    dragging={true}
    scrollWheelZoom={true}
@@ -55,18 +59,18 @@ const Map: React.FC = () => {
     style={{ color: '#555555' }}
    />
    {tourist_spots.map(
-    (point: { tourist_spot: string; coordinates: number[] }, idx: number) => (
+    (point: { tourist_spots: string; coordinates: number[] }, idx: number) => (
      <Marker
       key={idx}
       riseOnHover={true}
       position={[point.coordinates[0], point.coordinates[1]]}
-      title={point.tourist_spot}
-      alt={point.tourist_spot}
+      title={point.tourist_spots}
+      alt={point.tourist_spots}
       icon={orangeIcon}
      >
       <Popup>
        <div className="p-4 bg-white shadow-md rounded-lg">
-        <h1 className="text-lg font-semibold">{point.tourist_spot}</h1>
+        <h1 className="text-lg font-semibold">{point.tourist_spots}</h1>
         <p>{point.coordinates}</p>
        </div>
       </Popup>
