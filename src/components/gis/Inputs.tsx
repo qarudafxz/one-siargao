@@ -6,12 +6,11 @@ import { build } from '@/lib/build'
 import { useShortestPath } from '@/store/shortest_path'
 
 const Inputs: React.FC = () => {
- // const { data } = useDataStore()
  const { setShortestPath } = useShortestPath()
  const [value, setValue] = useState<DataProps>({
-  starting_point: 'Sayak',
-  time_of_travel: '0 - 30 minutes',
-  mode_of_transportation: 'Motorcycle',
+  starting_point: 'Dapa',
+  time_of_travel: '2 hours - 3 hours',
+  mode_of_transportation: 'Walking',
   budget: 0
  })
  const [loading, setLoading] = useState(false)
@@ -36,7 +35,7 @@ const Inputs: React.FC = () => {
 
    const data = await response.json()
    if (response.status === 200) {
-    setShortestPath(data.spots)
+    setShortestPath(data.shortest_path_coordinates)
     setLoading(false)
    }
   } catch (err) {

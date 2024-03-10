@@ -39,7 +39,6 @@ export const dijkstra = (
  const distances: DistanceMap = {}
  const previous: PreviousMap = {}
 
- // initialize the distances dictionary with infinite distances for all nodes except the starting point
  coordinates.forEach((coord) => {
   if (coord.label !== start) {
    distances[coord.label] = Infinity
@@ -48,12 +47,9 @@ export const dijkstra = (
   }
  })
 
- // create a set of unvisited nodes
  const unvisited = new Set(coordinates.map((coord) => coord.label))
 
- // while there are still unvisited nodes
  while (unvisited.size > 0) {
-  // find the node with the smallest distance
   let current: string | undefined
   for (const node of unvisited) {
    if (!current || distances[node] < distances[current]) {
@@ -61,7 +57,6 @@ export const dijkstra = (
    }
   }
 
-  // if the current node is a tourist spot, add it to the result array
   const spot = spots.find((spot) => spot.properties.coordinate === current)
   if (spot) {
    const result: DijkstraResult = {
@@ -83,10 +78,8 @@ export const dijkstra = (
    return result
   }
 
-  // remove the current node from the set of unvisited nodes
   unvisited.delete(current!)
 
-  // for each neighbor of the current node
   for (const neighbor of coordinates.filter((coord) =>
    coord.neighbors.includes(current!)
   )) {
@@ -100,7 +93,6 @@ export const dijkstra = (
      coordinates.find((c) => c.label === current)!.coordinates[1]) **
      2
 
-   // if the distance is shorter than the current distance to the neighbor, update the distance and previous node
    if (distance < distances[neighbor.label]) {
     distances[neighbor.label] = distance
     previous[neighbor.label] = current
@@ -108,6 +100,5 @@ export const dijkstra = (
   }
  }
 
- // if we reach here, it means we didn't find any tourist spots
  return [] as DijkstraResult[]
 }
