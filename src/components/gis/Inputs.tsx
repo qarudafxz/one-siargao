@@ -24,7 +24,8 @@ const Inputs: React.FC = () => {
    const response = await fetch(build('api/v1/generate'), {
     method: 'POST',
     headers: {
-     'Content-Type': 'application/json'
+     'Content-Type': 'application/json',
+     'Access-Control-Allow-Origin': '*'
     },
     body: JSON.stringify(value)
    })
