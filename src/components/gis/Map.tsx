@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 //eslint-disable-next-line
 //@ts-nocheck
 import React from 'react'
@@ -13,7 +14,7 @@ import 'leaflet/dist/leaflet.css'
 import starting_points from '@/data/starting_points.json'
 import { StartPoints } from '@/types/global'
 import road_networks from '@/data/Road_Networks.json'
-import tourist_spots from '@/data/spots.json'
+import tourist_spots from '@/data/tourist_spots.json'
 import orange_pin from '@/assets/orange_pin.png'
 import blue_pin from '@/assets/blue_pin.png'
 import { Icon } from 'leaflet'
@@ -46,12 +47,22 @@ const Map: React.FC = () => {
   className: 'blue-icon'
  })
 
+ const handleMouseOver = (event: React.MouseEvent) => {
+  const layer = event.target
+  layer.bindPopup(layer.feature.properties.Name)
+  layer.openPopup()
+ }
+
+ const orangeIconLayer = (feature: any, latlng: any) => {
+  return L.marker(latlng, { icon: orangeIcon })
+ }
+
  return (
   <MapContainer
    center={[9.86666, 126.05]}
    zoom={12}
    zoomSnap={0.5}
-   // minZoom={8}
+   minZoom={8}
    style={{ width: '100%', height: '100%', position: 'relative' }}
    dragging={true}
    scrollWheelZoom={true}
@@ -70,26 +81,15 @@ const Map: React.FC = () => {
     data={road_networks as GeoJsonObject}
     style={{ color: '#555555' }}
    />
-
-   {tourist_spots.map(
-    (point: { tourist_spots: string; coordinates: number[] }, idx: number) => (
-     <Marker
-      key={idx}
-      riseOnHover={true}
-      position={[point.coordinates[0], point.coordinates[1]]}
-      title={point.tourist_spots}
-      alt={point.tourist_spots}
-      icon={orangeIcon}
-     >
-      <Popup>
-       <div className="p-4 bg-white shadow-md rounded-lg">
-        <h1 className="text-lg font-semibold">{point.tourist_spots}</h1>
-        <p>{point.coordinates}</p>
-       </div>
-      </Popup>
-     </Marker>
-    )
-   )}
+   <GeoJSON
+    data={tourist_spots as GeoJsonObject}
+    pointToLayer={orangeIconLayer}
+    onEachFeature={(feature, layer) => {
+     layer.on({
+      mouseover: handleMouseOver
+     })
+    }}
+   />
    {starting_points.map((point: StartPoints, idx: number) => (
     <Marker
      key={idx}
@@ -122,8 +122,12 @@ const RoutingControl: React.FC<{ shortestPath: number[][] }> = ({
   waypoints: latLngs,
   routeWhileDragging: true,
   lineOptions: {
-   styles: [{ color: '#22c55e', opacity: 0.7, weight: 5 }]
-  }
+   styles: [{ color: '#22c55e', opacity: 0.7, weight: 8 }]
+  },
+  autoRoute: true,
+  draggableWaypoints: true,
+  fitSelectedRoutes: false,
+  createMarker: () => {}
  }).addTo(map)
 
  return null

@@ -6,8 +6,8 @@ const SidebarComponent: React.FC = () => {
  return (
   <div className="flex flex-col gap-4 p-6 font-main">
    <div className="flex gap-3 items-center">
-    <img src={logo} alt="#1 Siargao" className="w-14 h-auto" />
-    <h1 className="font-extrabold text-2xl text-main">
+    <img src={logo} alt="#1 Siargao" className="w-6 h-auto" />
+    <h1 className="font-extrabold text-xl text-main">
      #1 Siar<span className="text-black">gao</span>
     </h1>
    </div>
