@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 //eslint-disable-next-line
 //@ts-nocheck
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {
  MapContainer,
  TileLayer,
@@ -111,26 +111,37 @@ const Map: React.FC = () => {
   </MapContainer>
  )
 }
-
 const RoutingControl: React.FC<{ shortestPath: number[][] }> = ({
  shortestPath
 }) => {
  const map = useMap()
 
- const latLngs = shortestPath.map((coord) => L.latLng(coord[1], coord[0]))
- L.Routing.control({
-  waypoints: latLngs,
-  routeWhileDragging: true,
-  lineOptions: {
-   styles: [{ color: '#22c55e', opacity: 0.7, weight: 8 }]
-  },
-  autoRoute: true,
-  draggableWaypoints: true,
-  fitSelectedRoutes: false,
-  createMarker: () => {}
- }).addTo(map)
+ const simplifyLine = (line: number[][], tolerance: number) => {
+  const points = line.map((coord) => L.latLng(coord[1], coord[0]))
+  const simplifiedPoints = L.LineUtil.simplify(points, tolerance)
+  return simplifiedPoints.map((point) => [point.lng, point.lat])
+ }
+
+ const simplifiedPath = simplifyLine(shortestPath, 0.5)
+
+ useEffect(() => {
+  const routingControl = L.Routing.control({
+   waypoints: simplifiedPath.map((coord) => L.latLng(coord[1], coord[0])),
+   routeWhileDragging: true,
+   lineOptions: {
+    styles: [{ color: '#22c55e', opacity: 0.7, weight: 8 }]
+   },
+   autoRoute: true,
+   draggableWaypoints: true,
+   fitSelectedRoutes: false,
+   createMarker: () => {}
+  }).addTo(map)
+
+  return () => {
+   map.removeControl(routingControl)
+  }
+ }, [map, simplifiedPath])
 
  return null
 }
-
 export default Map

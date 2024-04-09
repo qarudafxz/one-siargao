@@ -34,3 +34,24 @@ export interface DataProps {
  mode_of_transportation?: string
  budget?: number
 }
+
+export interface Geometry {
+ type: string
+ coordinates: number[][]
+}
+
+export interface Feature {
+ type: string
+ properties: { [key: string]: any }
+ geometry: Geometry
+}
+
+export interface FeatureCollection {
+ type: string
+ name: string
+ crs: {
+  type: string
+  properties: { name: string }
+ }
+ features: Feature[]
+}

@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import { Input, Button } from '@chakra-ui/react'
+import { Button } from '@chakra-ui/react'
 import { DataProps } from '@/types/global'
 import { toast, Toaster } from 'sonner'
-import { build } from '@/lib/build'
+// import { build } from '@/lib/build'
 import { useShortestPath } from '@/store/shortest_path'
+// import { useInput } from '@/store/input'
+import { extractCoordinates } from '@/util/extractCoordinates'
+import { elevenToTwenty, zeroToTen } from '@/data/sayak/index'
 
 const Inputs: React.FC = () => {
  const { setShortestPath } = useShortestPath()
  const [startingPoint, setStartingPoint] = useState('Dapa')
- const [timeOfTravel, setTimeOfTravel] = useState('0 - 30 minutes')
+ const [timeOfTravel, setTimeOfTravel] = useState('0 - 10 minutes')
  const [modeOfTransportation, setModeOfTransportation] = useState('Walk')
- const [budget, setBudget] = useState(0)
  const [value, setValue] = useState<DataProps>({
   starting_point: 'Dapa',
   time_of_travel: '2 hours - 3 hours',
@@ -18,65 +20,81 @@ const Inputs: React.FC = () => {
   budget: 0
  })
 
- const handleGeneratePath = async (e: React.MouseEvent, type: string) => {
+ const handleGeneratePath = async (e: React.MouseEvent) => {
   e.preventDefault()
 
-  if (!startingPoint || !timeOfTravel || !modeOfTransportation) {
+  if (!startingPoint || !timeOfTravel) {
    toast.error('Please fill up all fields')
    return
   }
 
-  setValue({
-   starting_point: startingPoint,
-   time_of_travel: timeOfTravel,
-   mode_of_transportation: modeOfTransportation,
-   budget: budget ? Number(budget) : undefined
-  })
+  // setValue({
+  //  starting_point: startingPoint,
+  //  time_of_travel: timeOfTravel,
+  //  mode_of_transportation: modeOfTransportation
+  // })
 
-  const promise = () => new Promise((resolve) => setTimeout(resolve, 1000))
-  try {
-   const response = await fetch(build('api/v1/generate'), {
-    method: 'POST',
-    headers: {
-     'Content-Type': 'application/json',
-     'Access-Control-Allow-Origin': '*'
-    },
-    body: JSON.stringify({ ...value, type })
-   })
-
-   if (!response.ok) {
-    throw new Error('An error occurred while generating the shortest path')
+  let coordinates: number[][] = []
+  if (startingPoint === 'Sayak Airport') {
+   if (timeOfTravel === '0 - 10 minutes') {
+    coordinates = extractCoordinates(zeroToTen)
+   } else if (timeOfTravel === '11 - 20 minutes') {
+    coordinates = extractCoordinates(elevenToTwenty)
    }
-
-   toast.promise(promise, {
-    loading: 'Generating shortest path, Please wait...',
-    success: () => {
-     return `Shortest path generated successfully`
-    },
-    error:
-     'Error occurred while generating the shortest path. Please try again in a little bit.'
-   })
-
-   const data = await response.json()
-   if (response.status === 200) {
-    setShortestPath(data.shortest_path_coordinates)
-   }
-  } catch (err) {
-   toast.promise(promise, {
-    loading: 'Generating shortest path, Please wait...'
-   })
-   toast.error('An error occurred while generating the shortest path')
   }
+  setShortestPath(coordinates)
+  return
+
+  // const promise = () => new Promise((resolve) => setTimeout(resolve, 1000))
+  // try {
+  //  toast.promise(promise, {
+  //   loading: 'Generating shortest path, Please wait...',
+  //   success: () => {
+  //    return `Shortest path generated successfully`
+  //   },
+  //   error:
+  //    'Error occurred while generating the shortest path. Please try again in a little bit.'
+  //  })
+
+  //  const response = await fetch(build('api/v1/generate'), {
+  //   method: 'POST',
+  //   headers: {
+  //    'Content-Type': 'application/json',
+  //    'Access-Control-Allow-Origin': '*'
+  //   },
+  //   body: JSON.stringify({ ...value, type })
+  //  })
+  //  if (!response.ok) {
+  //   throw new Error('An error occurred while generating the shortest path')
+  //  }
+  //  toast.promise(promise, {
+  //   loading: 'Generating shortest path, Please wait...',
+  //   success: () => {
+  //    return `Shortest path generated successfully`
+  //   },
+  //   error:
+  //    'Error occurred while generating the shortest path. Please try again in a little bit.'
+  //  })
+  //  const data = await response.json()
+  //  if (response.status === 200) {
+  //   console.log(data.shortest_path_coordinates)
+  //   setShortestPath(data.shortest_path_coordinates)
+  //  }
+  // } catch (err) {
+  //  toast.promise(promise, {
+  //   loading: 'Generating shortest path, Please wait...'
+  //  })
+  //  toast.error('An error occurred while generating the shortest path')
+  // }
  }
 
  useEffect(() => {
   setValue({
    starting_point: startingPoint,
    time_of_travel: timeOfTravel,
-   mode_of_transportation: modeOfTransportation,
-   budget: budget ? Number(budget) : undefined
+   mode_of_transportation: modeOfTransportation
   })
- }, [startingPoint, timeOfTravel, modeOfTransportation, budget])
+ }, [startingPoint, timeOfTravel, modeOfTransportation])
 
  return (
   <div className="flex flex-col gap-4">
@@ -104,8 +122,8 @@ const Inputs: React.FC = () => {
       className="w-full border border-zinc-500 rounded-md py-2 px-2"
       onChange={(e) => setTimeOfTravel(e.target.value)}
      >
-      <option value="0 - 30 minutes">0 - 30 minutes</option>
-      <option value="30 minutes - 1 hour">30 minutes - 1 hour</option>
+      <option value="0 - 10 minutes">0 - 10 minutes</option>
+      <option value="11 - 20 minutes">11 - 20 minutes</option>
       <option value="1 hour - 2 hours">1 hour - 2 hours</option>
       <option value="2 hours - 3 hours">2 hours - 3 hours</option>
       <option value="3 hours - 4 hours">3 hours - 4 hours</option>
@@ -132,35 +150,28 @@ const Inputs: React.FC = () => {
       <option value="Boat">Boat</option>
      </select>
     </div>
-    <div>
-     <label htmlFor="budget">
-      Budget <span className="text-zinc-400">(Optional)</span>
-     </label>
-     <Input
-      id="budget"
-      type="number"
-      placeholder="Enter your budget in PHP"
-      value={value.budget}
-      className="w-full border border-zinc-500 rounded-md py-2 px-2"
-      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-       setBudget(parseInt(e.target.value))
-      }
-     />
-    </div>
+
     <div className="flex flex-col gap-3">
      <Button
-      onClick={(e) => handleGeneratePath(e, 'not all')}
+      onClick={(e) => handleGeneratePath(e)}
       variant="contained"
       className="w-full bg-main py-2 rounded-md text-white shadow-xl hover:bg-blue-600 duration-150 hover:shadow-sm"
      >
       Generate Shortest Path
      </Button>
-     <Button
+     {/* <Button
       onClick={(e) => handleGeneratePath(e, 'all')}
       variant="contained"
       className="w-full border border-blue-500 py-2 rounded-md text-blue-500 shadow-xl"
      >
       Pass through all tourist spots
+     </Button> */}
+     <Button
+      onClick={(e) => handleGeneratePath(e)}
+      variant="contained"
+      className="w-full border border-blue-500 py-2 rounded-md text-blue-500 shadow-xl"
+     >
+      Clear Route
      </Button>
     </div>
    </form>
