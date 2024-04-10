@@ -184,7 +184,7 @@ const Inputs: React.FC = () => {
       Pass through all tourist spots
      </Button> */}
      <Button
-      onClick={(e) => setShortestPath([])}
+      onClick={() => setShortestPath([])}
       variant="contained"
       className="w-full border border-blue-500 py-2 rounded-md text-blue-500 shadow-xl"
      >
