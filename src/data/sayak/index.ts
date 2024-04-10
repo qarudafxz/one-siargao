@@ -1,2 +1,7 @@
 export { default as zeroToTen } from './0-10_Minutes'
 export { default as elevenToTwenty } from './11-20_Minutes'
+export { default as twentyOneToThirty } from './21-30_Minutes'
+export { default as thirtyOneToForty } from './31-40_Minutes'
+export { default as fortyOneToFifty } from './41-50_Minutes'
+export { default as fiftyOneToSixty } from './51-60_Minutes'
+export { default as sixtyOneToSeventy } from './61-70_Minutes'

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 //eslint-disable-next-line
 //@ts-nocheck
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import {
  MapContainer,
  TileLayer,
@@ -23,6 +23,9 @@ import 'leaflet-routing-machine/dist/leaflet-routing-machine.css'
 import 'leaflet-routing-machine'
 import L from 'leaflet'
 import { GeoJsonObject } from 'geojson'
+import primary_roads from '@/data/primary_roads.json'
+import secondary_roads from '@/data/secondary_roads.json'
+import tertiary_roads from '@/data/tertiary_roads.json'
 
 const Map: React.FC = () => {
  const { shortestPath } = useShortestPath()
@@ -77,10 +80,31 @@ const Map: React.FC = () => {
 
    {shortestPath.length > 1 && <RoutingControl shortestPath={shortestPath} />}
 
+   {/* Render road networks (behind primary, secondary, and tertiary roads) */}
    <GeoJSON
     data={road_networks as GeoJsonObject}
-    style={{ color: '#555555' }}
+    style={{ color: '#2F2F2F' }}
    />
+
+   {/* Render secondary roads */}
+   <GeoJSON
+    data={secondary_roads as GeoJsonObject}
+    style={{ color: '#D8FF00' }}
+   />
+
+   {/* Render primary roads */}
+   <GeoJSON
+    data={primary_roads as GeoJsonObject}
+    style={{ color: '#7A33FF' }}
+   />
+
+   {/* Render tertiary roads */}
+   <GeoJSON
+    data={tertiary_roads as GeoJsonObject}
+    style={{ color: '#FF0D0D' }}
+   />
+
+   {/* Render tourist spots */}
    <GeoJSON
     data={tourist_spots as GeoJsonObject}
     pointToLayer={orangeIconLayer}
@@ -90,6 +114,8 @@ const Map: React.FC = () => {
      })
     }}
    />
+
+   {/* Render starting points */}
    {starting_points.map((point: StartPoints, idx: number) => (
     <Marker
      key={idx}
@@ -111,37 +137,55 @@ const Map: React.FC = () => {
   </MapContainer>
  )
 }
+
 const RoutingControl: React.FC<{ shortestPath: number[][] }> = ({
  shortestPath
 }) => {
  const map = useMap()
 
- const simplifyLine = (line: number[][], tolerance: number) => {
-  const points = line.map((coord) => L.latLng(coord[1], coord[0]))
-  const simplifiedPoints = L.LineUtil.simplify(points, tolerance)
-  return simplifiedPoints.map((point) => [point.lng, point.lat])
+ console.log(shortestPath)
+ const slicePathPerBatches = () => {
+  const sizeOfShortestPath = shortestPath.length
+  const batchSize = Math.ceil(sizeOfShortestPath / 100)
+
+  const batchedPath = []
+  let start = 0
+  let end = batchSize
+
+  while (end <= sizeOfShortestPath) {
+   batchedPath.push(shortestPath.slice(start, end))
+   start = end
+   end += batchSize
+  }
+
+  if (start < sizeOfShortestPath) {
+   batchedPath.push(shortestPath.slice(start))
+  }
+
+  return batchedPath
  }
 
- const simplifiedPath = simplifyLine(shortestPath, 0.5)
+ const batchedPath = slicePathPerBatches()
 
  useEffect(() => {
   const routingControl = L.Routing.control({
-   waypoints: simplifiedPath.map((coord) => L.latLng(coord[1], coord[0])),
+   waypoints: batchedPath.map((batch) => L.latLng(batch[0][1], batch[0][0])),
    routeWhileDragging: true,
    lineOptions: {
     styles: [{ color: '#22c55e', opacity: 0.7, weight: 8 }]
    },
    autoRoute: true,
-   draggableWaypoints: true,
-   fitSelectedRoutes: false,
+   draggableWaypoints: false,
+   fitSelectedRoutes: true,
    createMarker: () => {}
   }).addTo(map)
 
   return () => {
    map.removeControl(routingControl)
   }
- }, [map, simplifiedPath])
+ }, [map, shortestPath, batchedPath])
 
  return null
 }
+
 export default Map

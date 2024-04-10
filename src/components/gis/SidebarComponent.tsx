@@ -30,6 +30,18 @@ const SidebarComponent: React.FC = () => {
       <div className="w-2 h-2 bg-green-500 rounded-full"></div>
       <p className="text-[12px]">Shortest Path</p>
      </div>
+     <div className="flex gap-2 items-center">
+      <div className="w-2 h-2 bg-[#7A33FF] rounded-full"></div>
+      <p className="text-[12px]">Primary Roads</p>
+     </div>
+     <div className="flex gap-2 items-center">
+      <div className="w-2 h-2 bg-[#D8FF00] rounded-full"></div>
+      <p className="text-[12px]">Secondary Roads</p>
+     </div>
+     <div className="flex gap-2 items-center">
+      <div className="w-2 h-2 bg-[#FF0D0D] rounded-full"></div>
+      <p className="text-[12px]">Tertiary Roads</p>
+     </div>
     </div>
    </div>
    <Inputs />

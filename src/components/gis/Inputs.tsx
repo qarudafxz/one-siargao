@@ -6,13 +6,21 @@ import { toast, Toaster } from 'sonner'
 import { useShortestPath } from '@/store/shortest_path'
 // import { useInput } from '@/store/input'
 import { extractCoordinates } from '@/util/extractCoordinates'
-import { elevenToTwenty, zeroToTen } from '@/data/sayak/index'
+import {
+ elevenToTwenty,
+ zeroToTen,
+ twentyOneToThirty,
+ thirtyOneToForty,
+ fortyOneToFifty,
+ fiftyOneToSixty,
+ sixtyOneToSeventy
+} from '@/data/sayak/index'
 
 const Inputs: React.FC = () => {
  const { setShortestPath } = useShortestPath()
  const [startingPoint, setStartingPoint] = useState('Dapa')
  const [timeOfTravel, setTimeOfTravel] = useState('0 - 10 minutes')
- const [modeOfTransportation, setModeOfTransportation] = useState('Walk')
+ //  const [modeOfTransportation, setModeOfTransportation] = useState('Walk')
  const [value, setValue] = useState<DataProps>({
   starting_point: 'Dapa',
   time_of_travel: '2 hours - 3 hours',
@@ -40,6 +48,16 @@ const Inputs: React.FC = () => {
     coordinates = extractCoordinates(zeroToTen)
    } else if (timeOfTravel === '11 - 20 minutes') {
     coordinates = extractCoordinates(elevenToTwenty)
+   } else if (timeOfTravel === '21 - 30 minutes') {
+    coordinates = extractCoordinates(twentyOneToThirty)
+   } else if (timeOfTravel === '31 - 40 minutes') {
+    coordinates = extractCoordinates(thirtyOneToForty)
+   } else if (timeOfTravel === '41 - 50 minutes') {
+    coordinates = extractCoordinates(fortyOneToFifty)
+   } else if (timeOfTravel === '51 - 60 minutes') {
+    coordinates = extractCoordinates(fiftyOneToSixty)
+   } else if (timeOfTravel === '61 - 70 minutes') {
+    coordinates = extractCoordinates(sixtyOneToSeventy)
    }
   }
   setShortestPath(coordinates)
@@ -91,10 +109,10 @@ const Inputs: React.FC = () => {
  useEffect(() => {
   setValue({
    starting_point: startingPoint,
-   time_of_travel: timeOfTravel,
-   mode_of_transportation: modeOfTransportation
+   time_of_travel: timeOfTravel
+   //  mode_of_transportation: modeOfTransportation
   })
- }, [startingPoint, timeOfTravel, modeOfTransportation])
+ }, [startingPoint, timeOfTravel])
 
  return (
   <div className="flex flex-col gap-4">
@@ -124,15 +142,14 @@ const Inputs: React.FC = () => {
      >
       <option value="0 - 10 minutes">0 - 10 minutes</option>
       <option value="11 - 20 minutes">11 - 20 minutes</option>
-      <option value="1 hour - 2 hours">1 hour - 2 hours</option>
-      <option value="2 hours - 3 hours">2 hours - 3 hours</option>
-      <option value="3 hours - 4 hours">3 hours - 4 hours</option>
-      <option value="4 hours - 5 hours">4 hours - 5 hours</option>
-      <option value="6 hours - 7 hours">6 hours - 7 hours</option>
-      <option value="7 hours - 8 hours">7 hours - 8 hours</option>
+      <option value="21 - 30 minutes">21 - 30 minutes</option>
+      <option value="31 - 40 minutes">31 - 40 minutes</option>
+      <option value="41 - 50 minutes">41 - 50 minutes</option>
+      <option value="51 - 60 minutes">51 - 60 minutes</option>
+      <option value="61 - 70 minutes">61 - 70 minutes</option>
      </select>
     </div>
-    <div>
+    {/* <div>
      <label htmlFor="mode_of_transportation">Mode of Transportation</label>
      <select
       id="mode_of_transportation"
@@ -149,7 +166,7 @@ const Inputs: React.FC = () => {
       <option value="Bicycle">Bicycle</option>
       <option value="Boat">Boat</option>
      </select>
-    </div>
+    </div> */}
 
     <div className="flex flex-col gap-3">
      <Button
@@ -167,7 +184,7 @@ const Inputs: React.FC = () => {
       Pass through all tourist spots
      </Button> */}
      <Button
-      onClick={(e) => handleGeneratePath(e)}
+      onClick={(e) => setShortestPath([])}
       variant="contained"
       className="w-full border border-blue-500 py-2 rounded-md text-blue-500 shadow-xl"
      >
