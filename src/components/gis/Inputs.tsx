@@ -158,7 +158,7 @@ const Inputs: React.FC = () => {
       onChange={(e) => setStartingPoint(e.target.value)}
       className="w-full border border-zinc-500 rounded-md py-2 px-2"
      >
-      <option value="Dapa Seaport">Dapa Seaport</option>
+      <option value="Dapa Seaport">Port of Dapa</option>
       <option value="Sayak Airport">Sayak Airport</option>
      </select>
     </div>

@@ -62,6 +62,7 @@ const Map: React.FC = () => {
 
  return (
   <MapContainer
+   onClick={(e) => console.log(e.latlng)}
    center={[9.86666, 126.05]}
    zoom={12}
    zoomSnap={0.5}
@@ -143,7 +144,6 @@ const RoutingControl: React.FC<{ shortestPath: number[][] }> = ({
 }) => {
  const map = useMap()
 
- console.log(shortestPath)
  const slicePathPerBatches = () => {
   const sizeOfShortestPath = shortestPath.length
   const batchSize = Math.ceil(sizeOfShortestPath / 100)
