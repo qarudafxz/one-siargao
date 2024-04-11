@@ -41,6 +41,7 @@
   "react-router-dom": "^6.22.1",
   "react-scroll": "^1.9.0",
   "sonner": "^1.4.0",
+  "vite-plugin-pwa": "^0.19.8",
   "zustand": "^4.5.1"
  },
  "devDependencies": {
