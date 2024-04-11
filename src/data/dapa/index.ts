@@ -1,0 +1,7 @@
+export { default as elevenToTwentyDapa } from './11_20'
+export { default as twentyOneToThirtyDapa } from './21_30'
+export { default as thirtyOneToFortyDapa } from './31_40'
+export { default as fortyOneToFiftyDapa } from './41_50'
+export { default as fiftyOneToSixtyDapa } from './51_60'
+export { default as sixtyOneToSeventyDapa } from './61_70'
+export { default as seventyOneToEightyDapa } from './71_80'

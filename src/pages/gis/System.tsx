@@ -7,7 +7,11 @@ const System: React.FC = () => {
  return (
   <div>
    {isMobile ? (
-    <div></div>
+    <div className="grid grid-cols-10 w-full">
+     <div className="col-span-8 relative">
+      <Map />
+     </div>
+    </div>
    ) : (
     <div className="grid grid-cols-10">
      {/* Toggle menus */}

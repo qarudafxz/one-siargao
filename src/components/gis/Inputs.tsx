@@ -15,6 +15,15 @@ import {
  fiftyOneToSixty,
  sixtyOneToSeventy
 } from '@/data/sayak/index'
+import {
+ elevenToTwentyDapa,
+ twentyOneToThirtyDapa,
+ thirtyOneToFortyDapa,
+ fortyOneToFiftyDapa,
+ fiftyOneToSixtyDapa,
+ sixtyOneToSeventyDapa,
+ seventyOneToEightyDapa
+} from '@/data/dapa/index'
 
 const Inputs: React.FC = () => {
  const { setShortestPath } = useShortestPath()
@@ -58,6 +67,28 @@ const Inputs: React.FC = () => {
     coordinates = extractCoordinates(fiftyOneToSixty)
    } else if (timeOfTravel === '61 - 70 minutes') {
     coordinates = extractCoordinates(sixtyOneToSeventy)
+   } else if (timeOfTravel === '71 - 80 minutes') {
+    toast.error('Route not found. Only Dapa has 71 - 80 minutes data.')
+    return
+   }
+  } else {
+   if (timeOfTravel === '0 - 10 minutes') {
+    toast.error('Route not found. Only Sayak has 0 - 10 minutes data.')
+    return
+   } else if (timeOfTravel === '11 - 20 minutes') {
+    coordinates = extractCoordinates(elevenToTwentyDapa)
+   } else if (timeOfTravel === '21 - 30 minutes') {
+    coordinates = extractCoordinates(twentyOneToThirtyDapa)
+   } else if (timeOfTravel === '31 - 40 minutes') {
+    coordinates = extractCoordinates(thirtyOneToFortyDapa)
+   } else if (timeOfTravel === '41 - 50 minutes') {
+    coordinates = extractCoordinates(fortyOneToFiftyDapa)
+   } else if (timeOfTravel === '51 - 60 minutes') {
+    coordinates = extractCoordinates(fiftyOneToSixtyDapa)
+   } else if (timeOfTravel === '61 - 70 minutes') {
+    coordinates = extractCoordinates(sixtyOneToSeventyDapa)
+   } else if (timeOfTravel === '71 - 80 minutes') {
+    coordinates = extractCoordinates(seventyOneToEightyDapa)
    }
   }
   setShortestPath(coordinates)
@@ -147,6 +178,7 @@ const Inputs: React.FC = () => {
       <option value="41 - 50 minutes">41 - 50 minutes</option>
       <option value="51 - 60 minutes">51 - 60 minutes</option>
       <option value="61 - 70 minutes">61 - 70 minutes</option>
+      <option value="71 - 80 minutes">71 - 80 minutes</option>
      </select>
     </div>
     {/* <div>
