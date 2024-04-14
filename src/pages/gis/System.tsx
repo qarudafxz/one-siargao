@@ -19,7 +19,7 @@ const System: React.FC = () => {
     <div className="grid grid-cols-10 w-full h-full">
      <div className="col-span-2 flex flex-col gap-4">
       <div
-       className="flex justify-start items-start bg-white cursor-pointer h-screen"
+       className="flex justify-start items-start cursor-pointer h-screen bg-transparent"
        onClick={toggleSidebar}
       >
        {isSidebarOpen ? (
@@ -38,7 +38,7 @@ const System: React.FC = () => {
      <div
       className={`col-span-8 relative`}
       style={{
-       marginLeft: isSidebarOpen ? '217px' : '0',
+       marginLeft: isSidebarOpen ? '200px' : '0',
        transition: 'margin-left 0.3s ease'
       }}
      >
@@ -47,7 +47,7 @@ const System: React.FC = () => {
      {/* Sidebar */}
      {isSidebarOpen && (
       <motion.div
-       className="fixed left-0 top-0 h-full w-64 bg-white z-20 shadow"
+       className="fixed left-0 top-0 h-full w-64 bg-transparent z-20 shadow"
        initial={{ x: -300 }}
        animate={{ x: 0 }}
        transition={{ duration: 0.3, ease: 'easeInOut' }}
@@ -59,7 +59,9 @@ const System: React.FC = () => {
    ) : (
     <div className="grid grid-cols-10">
      {/* Toggle menus */}
-     <div className="col-span-2 bg-white h-screen w-full">
+     <div className="col-span-2 bg-transparent h-screen w-full">
+      {' '}
+      {/* Changed bg-white to bg-transparent */}
       <SidebarComponent />
      </div>
      {/* OpenStreetMap */}
